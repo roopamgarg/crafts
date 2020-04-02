@@ -10,6 +10,7 @@ DeliveryInfoHandler.create = async (req,res) => {
           message: "Information Added Successfully"
         });
       } catch (err) {
+        console.log(err)
         res.status(500).json({
           error: err.message
         });

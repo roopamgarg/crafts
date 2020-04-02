@@ -10,6 +10,7 @@ ProductHandler.create = async (req, res) => {
       message: "Product Added Successfully"
     });
   } catch (err) {
+    console.log(err)
     res.status(500).json({
       error: err.message
     });
@@ -26,6 +27,7 @@ ProductHandler.fetchOne = async (req, res) => {
     }
     res.status(200).json(product);
   } catch (err) {
+    console.log(err)
     res.status(500).json({
       message: err.message
     });
@@ -38,6 +40,7 @@ ProductHandler.edit = async (req, res) => {
       message: "Product Edited Successfully"
     });
   } catch (err) {
+    console.log(err)
     res.status(500).json({
       error: err.message
     });
@@ -50,6 +53,7 @@ ProductHandler.delete = async (req, res) => {
       message: "Product Deleted Successfully"
     });
   } catch (err) {
+    console.log(err)
     res.status(500).json({
       error: err.message
     });
@@ -60,6 +64,7 @@ ProductHandler.fetchAll = async (req, res) => {
     const products = await Product.fetch(req.query.pageNo, req.query.pageSize);
     res.status(200).json(products);
   } catch (err) {
+    console.log(err)
     res.status(500).json({
       error: err.message
     });
@@ -67,10 +72,11 @@ ProductHandler.fetchAll = async (req, res) => {
 };
 ProductHandler.fetchByTags = async (req, res) => {
   try {
-    console.log(req.query)
-    const products = await Tags.fetchByTags(JSON.parse(req.query.tags));
+
+    const products = await Tags.fetchByTags(req.query.tags.split(","));
     res.status(200).json(products);
   } catch (err) {
+    console.log(err)
     res.status(500).json({
       error: err.message
     });

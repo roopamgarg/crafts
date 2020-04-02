@@ -1,3 +1,2 @@
-config
 deploy.sh
-install_mongo.sh
+config

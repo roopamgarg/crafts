@@ -62,8 +62,7 @@ describe("POST /product/add", () => {
     it("It Should Fetch All Products By Tags", done => {
       chai
         .request(URL)
-        .get(`/product/fetch_by_tags`)
-        .send({tags:["hello"]})
+        .get(`/product/fetch_by_tags?tags='hello'`)
         .end((err, res) => {
           expect(res).to.have.status(200);
           done();
